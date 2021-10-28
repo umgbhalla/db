@@ -6,6 +6,7 @@ on:
   issue_comment:
     types:
       - created
+      - edited
   issues:
     types:
       - labeled
@@ -14,17 +15,19 @@ on:
       - labeled
   workflow_dispatch:
 
-    jobs:
-      issue-manager:
-        runs-on: ubuntu-latest
+jobs:
+  issue-manager:
+    runs-on: ubuntu-latest
     steps:
       - uses: tiangolo/issue-manager@0.4.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config: >
             {
-              "cli": {
-                "delay": 0,
-                "message": "bonk"
-             }
-           }
+                "cli": {
+                    "delay": 0,
+                    "message": "bonk",
+                    "remove_label_on_comment": false,
+                    "remove_label_on_close": false
+                }
+            }
