@@ -21,7 +21,10 @@ on:
       - uses: tiangolo/issue-manager@0.4.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          config: '"cli": {
-            "delay": 0,
-        "message": "bonk"
-  }'
+          config: >
+            {
+              "cli": {
+                "delay": 0,
+                "message": "bonk"
+             }
+           }
